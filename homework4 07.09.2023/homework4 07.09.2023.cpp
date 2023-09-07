@@ -3,8 +3,8 @@
 using namespace std;
 
 class PhoneBook {
-    char* lastName;
     char* firstName;
+    char* lastName;
     char* surName;
 
     char* homePhone;
@@ -23,17 +23,21 @@ public:
         workPhone = nullptr;
     }
     PhoneBook(const char* fn, const char* ln, const char* sn, const char* hp, const char* wp) {
+        // fn - firstName, ln - lastName, sn - surName, hp - homePhone, wp - workPhone
+   
+        cout << "Constructor 5 params" << endl;
+
+        firstName = new char[strlen(fn) + 1];
+        strcpy_s(firstName, strlen(fn) + 1, fn);
+
         lastName = new char[strlen(ln) + 1];
         strcpy_s(lastName, strlen(ln) + 1, ln);
 
-        firstName = new char[strlen(fn) + 1];
-        strcpy_s(lastName, strlen(fn) + 1, fn);
-
         surName = new char[strlen(sn) + 1];
-        strcpy_s(lastName, strlen(sn) + 1, sn);
+        strcpy_s(surName, strlen(sn) + 1, sn);
 
         homePhone = new char[strlen(hp) + 1];
-        strcpy_s(lastName, strlen(hp) + 1, hp);
+        strcpy_s(homePhone, strlen(hp) + 1, hp);
 
         workPhone = new char[strlen(wp) + 1];
         strcpy_s(workPhone, strlen(wp) + 1, wp);
@@ -132,7 +136,12 @@ int main() {
     setlocale(0, "");
     system("chcp 1251");
     
-    PhoneBook subscriber1;
+    PhoneBook subscriber1("Nikolay", "Filippov", "Olegovich", "+38 098 056 65 970", "+38 09 05 970");
+    subscriber1.Print();
+
+    subscriber1.Input();
+    cout << endl;
+    subscriber1.Print();
 
     return 0;
 }

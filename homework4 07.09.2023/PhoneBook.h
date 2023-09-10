@@ -15,8 +15,8 @@ public:
     void Input();
     void Print();
     int ResizeArray(PhoneBook*&, int);
-    void DelateSubscriber();
-    void SearchByFullname();
+    int DelateSubscriber(PhoneBook*&, int, int);
+    int SearchByFullname(PhoneBook* array, int size, const char* fn, const char* ln, const char* sn);
     void SaveToFile();
     void LoadFromFile();
 

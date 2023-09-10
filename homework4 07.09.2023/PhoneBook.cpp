@@ -1,5 +1,6 @@
 #include "PhoneBook.h"
 #include <iostream>
+#include <typeinfo>
 
 using namespace std;
 
@@ -127,12 +128,58 @@ int PhoneBook::ResizeArray(PhoneBook*& array, int oldSize) {
         newArray[i] = array[i];
 
     array = newArray;
+    delete[] newArray;
 
     return newSize;
 }
-void PhoneBook::DelateSubscriber() {
+
+// Функция на удаление ДОДЕЛАТЬ!
+int PhoneBook::DelateSubscriber(PhoneBook*& array, int oldSize, int numberDelate) {
+    int newSize = oldSize - 1;
+    PhoneBook* newArray = new PhoneBook[newSize];
+
+    // numberDelate = 1(index); oldSize = 3; newSize = 2; 
+
+    for (int i = 0; i < numberDelate; i++) {
+        newArray[i] = array[i];
+    }
+
+    for (int i = numberDelate; i < oldSize; i++) {
+        newArray[i] = array[i + 1];
+    }
+
+    array = newArray;
+
+    /*
+    cout << "FN: " << endl;
+
+    for (int i = 0; i < newSize; i++) {
+        array[i].Print();
+    }
+    cout << endl << endl;
+    */
+
+    delete[] newArray;
+
+    return newSize;
 }
-void PhoneBook::SearchByFullname() {
+
+int PhoneBook::SearchByFullname(PhoneBook* array, int size, const char* fn, const char* ln, const char* sn) {
+    cout << "Поиск по ФИО: " << endl;
+    cout << "Фамилия: " << ln << endl;
+    cout << "Имя: " << fn << endl;
+    cout << "Отчество: " << sn << endl;
+
+    for (int i = 0; i < size; i++) 
+        /*
+       cout << "LASTNAME type var: " << typeid(array[i].lastName).name() << ", " << typeid(ln).name() << endl;
+       cout << "LASTNAME number symbol: " << strlen(array[i].lastName) << ", " << strlen(ln) << endl;
+       cout << "LASTNAME: " << array[i].lastName << ", " << ln << endl;
+       */
+        if (strcmp(array[i].lastName, ln) == 0 && strcmp(array[i].firstName, fn) == 0 && strcmp(array[i].surName, sn) == 0)
+            return i; // Ключ найден       
+
+    return -1; // Ключ не найден
 }
 void PhoneBook::SaveToFile() {
 

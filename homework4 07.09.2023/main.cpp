@@ -7,7 +7,7 @@ int main() {
     setlocale(0, "");
     system("chcp 1251");
 
-    int numberSub = 1;
+    int numberSub = 2;
     int numberDelate = 0;
     int userChoice = 0;
     int key = 0;
@@ -21,11 +21,24 @@ int main() {
 
     PhoneBook* subscribers = new PhoneBook[numberSub];
 
+    cout << "OLD numberSub: " << numberSub << endl;
 
+    for (int i = 0; i < numberSub; i++) {
+        subscribers[i].Input();
+        cout << endl;
+    }
 
+    cout << "Введите пользователя которого нужно удалить: ";
+    cin >> numberDelate;
 
+    numberSub = subscribers->DelateSubscriber(subscribers, numberSub, numberDelate);
 
+    cout << "NEW numberSub: " << numberSub << endl;
 
+    for (int i = 0; i < numberSub; i++) {
+        subscribers[i].Print();
+        cout << endl;
+    }
 
     // Меню
     // ШАБЛОН МЕНЮ

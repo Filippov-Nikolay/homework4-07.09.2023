@@ -128,27 +128,22 @@ int PhoneBook::ResizeArray(PhoneBook*& array, int oldSize) {
         newArray[i] = array[i];
 
     array = newArray;
-    delete[] newArray;
 
     return newSize;
 }
-
-// Функция на удаление ДОДЕЛАТЬ!
 int PhoneBook::DelateSubscriber(PhoneBook*& array, int oldSize, int numberDelate) {
     int newSize = oldSize - 1;
     PhoneBook* newArray = new PhoneBook[newSize];
 
-    // numberDelate = 1(index); oldSize = 3; newSize = 2; 
-
-    for (int i = 0; i < numberDelate; i++) {
-        newArray[i] = array[i];
-    }
-
-    for (int i = numberDelate; i < oldSize; i++) {
-        newArray[i] = array[i + 1];
+    for (int i = 0, j = 0; i < oldSize; i++) {
+        if (i != numberDelate) {
+            newArray[j] = array[i];
+            j++;
+        }
     }
 
     array = newArray;
+    oldSize = newSize;
 
     /*
     cout << "FN: " << endl;
@@ -159,11 +154,8 @@ int PhoneBook::DelateSubscriber(PhoneBook*& array, int oldSize, int numberDelate
     cout << endl << endl;
     */
 
-    delete[] newArray;
-
     return newSize;
 }
-
 int PhoneBook::SearchByFullname(PhoneBook* array, int size, const char* fn, const char* ln, const char* sn) {
     cout << "Поиск по ФИО: " << endl;
     cout << "Фамилия: " << ln << endl;

@@ -157,6 +157,11 @@ int PhoneBook::DelateSubscriber(PhoneBook*& array, int oldSize, int numberDelate
     return newSize;
 }
 int PhoneBook::SearchByFullname(PhoneBook* array, int size, const char* fn, const char* ln, const char* sn) {
+    if (!array) {
+        cout << "is NULL" << endl;
+        return -2;
+    }
+
     cout << "Поиск по ФИО: " << endl;
     cout << "Фамилия: " << ln << endl;
     cout << "Имя: " << fn << endl;
@@ -174,6 +179,11 @@ int PhoneBook::SearchByFullname(PhoneBook* array, int size, const char* fn, cons
     return -1; // Ключ не найден
 }
 void PhoneBook::SaveToFile(PhoneBook* array, int size) {
+    if (!array) {
+        cout << "is NULL";
+        return;
+    }
+
     ofstream text("subscribersInfo.txt");
 
     for (int i = 0; i < size; i++) {

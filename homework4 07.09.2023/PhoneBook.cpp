@@ -1,6 +1,6 @@
 #include "PhoneBook.h"
 #include <iostream>
-#include <typeinfo>
+#include <fstream>
 
 using namespace std;
 
@@ -173,11 +173,29 @@ int PhoneBook::SearchByFullname(PhoneBook* array, int size, const char* fn, cons
 
     return -1; // Ключ не найден
 }
-void PhoneBook::SaveToFile() {
+void PhoneBook::SaveToFile(PhoneBook* array, int size) {
+    ofstream text("subscribersInfo.txt");
 
+    for (int i = 0; i < size; i++) {
+        text << "FirstName: " << array[i].firstName << ";" << endl;
+        text << "LastName: " << array[i].lastName << ";" << endl;
+        text << "SurName: " << array[i].surName << ";" << endl;
+        
+        text << "HomePhone: " << array[i].homePhone << ";" << endl;
+        text << "WorkPhone: " << array[i].workPhone << ";" << endl << endl;
+    }
 }
 void PhoneBook::LoadFromFile() {
+    int n = 256;
+    char* buffer = new char[n] {};
+    ifstream binary1("Employee.txt", ios::binary);
 
+    binary1.read(buffer, n);
+    cout << buffer << endl;
+
+    delete[] buffer;
+
+    binary1.close();
 }
 
 // Геттеры

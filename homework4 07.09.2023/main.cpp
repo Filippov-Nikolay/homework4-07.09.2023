@@ -19,26 +19,7 @@ int main() {
     char* lastName;
     char* surName;
 
-    PhoneBook* subscribers = new PhoneBook[numberSub];
-
-    cout << "OLD numberSub: " << numberSub << endl;
-
-    for (int i = 0; i < numberSub; i++) {
-        subscribers[i].Input();
-        cout << endl;
-    }
-
-    cout << "Введите пользователя которого нужно удалить: ";
-    cin >> numberDelate;
-
-    numberSub = subscribers->DelateSubscriber(subscribers, numberSub, numberDelate);
-
-    cout << "NEW numberSub: " << numberSub << endl;
-
-    for (int i = 0; i < numberSub; i++) {
-        subscribers[i].Print();
-        cout << endl;
-    }
+    PhoneBook* subscribers = nullptr;
 
     // Меню
     // ШАБЛОН МЕНЮ
@@ -116,20 +97,21 @@ int main() {
                 }
             }
             else if (userChoice == 5) {
-
+                subscribers->SaveToFile(subscribers, numberSub);
+                cout << "Данные записаны в файл" << endl << endl;
             }
             else if (userChoice == 6) {
-
+                subscribers->LoadFromFile();
             }
             else if (userChoice == 7) {
+                cout << "Введите пользователя которого нужно удалить: ";
+                cin >> numberDelate;
 
+                numberSub = subscribers->DelateSubscriber(subscribers, numberSub, numberDelate);
             }
         }
 
     } while (userChoice != 0 || userChoice < minMenuItem || userChoice > maxMenuItem);
-
-    
-
 
     return 0;
 }

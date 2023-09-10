@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 class PhoneBook {
     char* firstName;
     char* lastName;
@@ -20,7 +20,7 @@ public:
     void SaveToFile(PhoneBook* array, int size);
     void LoadFromFile();
 
-    // Инпекторы (геттеры)
+    // РРЅРїРµРєС‚РѕСЂС‹ (РіРµС‚С‚РµСЂС‹)
     char* GetFistName();
     char* GetLastName();
     char* GetSurName();
@@ -28,7 +28,7 @@ public:
     char* GetHomePhone();
     char* GetWorkPhone();
 
-    // Модификаторы (сеттеры)
+    // РњРѕРґРёС„РёРєР°С‚РѕСЂС‹ (СЃРµС‚С‚РµСЂС‹)
     void SetFistName(const char*);
     void SetLastName(const char*);
     void SetSurName(const char*);

@@ -1,10 +1,10 @@
-#include "PhoneBook.h"
+п»ї#include "PhoneBook.h"
 #include <iostream>
 #include <fstream>
 
 using namespace std;
 
-// Конструкторы/Деструктор
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹/Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 PhoneBook::PhoneBook() {
     firstName = nullptr;
     lastName = nullptr;
@@ -48,8 +48,8 @@ PhoneBook::~PhoneBook() {
 void PhoneBook::Input() {
     char buff[100];
 
-    // Имя
-    cout << "Введите имя: ";
+    // РРјСЏ
+    cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ: ";
     cin >> buff;
 
     if (firstName != nullptr) {
@@ -61,8 +61,8 @@ void PhoneBook::Input() {
     strcpy_s(firstName, strlen(buff) + 1, buff);
 
 
-    // Фамилия
-    cout << "Введите фамилию: ";
+    // Р¤Р°РјРёР»РёСЏ
+    cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: ";
     cin >> buff;
 
     if (lastName != nullptr) {
@@ -74,8 +74,8 @@ void PhoneBook::Input() {
     strcpy_s(lastName, strlen(buff) + 1, buff);
 
 
-    // Отчество
-    cout << "Введите отчество: ";
+    // РћС‚С‡РµСЃС‚РІРѕ
+    cout << "Р’РІРµРґРёС‚Рµ РѕС‚С‡РµСЃС‚РІРѕ: ";
     cin >> buff;
 
     if (surName != nullptr) {
@@ -87,8 +87,8 @@ void PhoneBook::Input() {
     strcpy_s(surName, strlen(buff) + 1, buff);
 
 
-    // Домашний номер телефона
-    cout << "Введите домашний номер телефона: ";
+    // Р”РѕРјР°С€РЅРёР№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°
+    cout << "Р’РІРµРґРёС‚Рµ РґРѕРјР°С€РЅРёР№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°: ";
     cin >> buff;
 
     if (homePhone != nullptr) {
@@ -100,8 +100,8 @@ void PhoneBook::Input() {
     strcpy_s(homePhone, strlen(buff) + 1, buff);
 
 
-    // Рабочий номер телефона
-    cout << "Введите рабочий номер телефона: ";
+    // Р Р°Р±РѕС‡РёР№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°
+    cout << "Р’РІРµРґРёС‚Рµ СЂР°Р±РѕС‡РёР№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°: ";
     cin >> buff;
 
     if (workPhone != nullptr) {
@@ -113,12 +113,12 @@ void PhoneBook::Input() {
     strcpy_s(workPhone, strlen(buff) + 1, buff);
 }
 void PhoneBook::Print() {
-    cout << "Фамилия: " << lastName << endl;
-    cout << "Имя: " << firstName << endl;
-    cout << "Отчество: " << surName << endl;
+    cout << "Р¤Р°РјРёР»РёСЏ: " << lastName << endl;
+    cout << "РРјСЏ: " << firstName << endl;
+    cout << "РћС‚С‡РµСЃС‚РІРѕ: " << surName << endl;
 
-    cout << "Домашний номер тф.: " << homePhone << endl;
-    cout << "Раб. номер тф.: " << workPhone << endl;
+    cout << "Р”РѕРјР°С€РЅРёР№ РЅРѕРјРµСЂ С‚С„.: " << homePhone << endl;
+    cout << "Р Р°Р±. РЅРѕРјРµСЂ С‚С„.: " << workPhone << endl;
 }
 int PhoneBook::ResizeArray(PhoneBook*& array, int oldSize) {
     int newSize = oldSize + 1;
@@ -162,10 +162,10 @@ int PhoneBook::SearchByFullname(PhoneBook* array, int size, const char* fn, cons
         return -2;
     }
 
-    cout << "Поиск по ФИО: " << endl;
-    cout << "Фамилия: " << ln << endl;
-    cout << "Имя: " << fn << endl;
-    cout << "Отчество: " << sn << endl;
+    cout << "РџРѕРёСЃРє РїРѕ Р¤РРћ: " << endl;
+    cout << "Р¤Р°РјРёР»РёСЏ: " << ln << endl;
+    cout << "РРјСЏ: " << fn << endl;
+    cout << "РћС‚С‡РµСЃС‚РІРѕ: " << sn << endl;
 
     for (int i = 0; i < size; i++) 
         /*
@@ -174,9 +174,9 @@ int PhoneBook::SearchByFullname(PhoneBook* array, int size, const char* fn, cons
        cout << "LASTNAME: " << array[i].lastName << ", " << ln << endl;
        */
         if (strcmp(array[i].lastName, ln) == 0 && strcmp(array[i].firstName, fn) == 0 && strcmp(array[i].surName, sn) == 0)
-            return i; // Ключ найден       
+            return i; // РљР»СЋС‡ РЅР°Р№РґРµРЅ       
 
-    return -1; // Ключ не найден
+    return -1; // РљР»СЋС‡ РЅРµ РЅР°Р№РґРµРЅ
 }
 void PhoneBook::SaveToFile(PhoneBook* array, int size) {
     if (!array) {
@@ -208,7 +208,7 @@ void PhoneBook::LoadFromFile() {
     binary1.close();
 }
 
-// Геттеры
+// Р“РµС‚С‚РµСЂС‹
 char* PhoneBook::GetFistName() {
 	return this->firstName;
 }
@@ -226,7 +226,7 @@ char* PhoneBook::GetWorkPhone() {
 }
 
 
-// Сеттеры
+// РЎРµС‚С‚РµСЂС‹
 void PhoneBook::SetFistName(const char* fn) {
     if (firstName != nullptr) {
         cout << "Delate firstName -> " << this->firstName << endl;

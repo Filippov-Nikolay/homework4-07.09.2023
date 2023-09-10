@@ -143,7 +143,6 @@ int PhoneBook::DelateSubscriber(PhoneBook*& array, int oldSize, int numberDelate
     }
 
     array = newArray;
-    oldSize = newSize;
 
     /*
     cout << "FN: " << endl;
